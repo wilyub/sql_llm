@@ -20,8 +20,8 @@ def load_csv_to_ds():
                 else:
                     d[k].append(v)
     ds = Dataset.from_dict(d)
-    ds_train_test = ds.train_test_split(test_size = 0.2)
-    test_valid = ds_train_test['test'].train_test_split(test_size=0.5)
+    ds_train_test = ds.train_test_split(test_size = 0.2, seed=42)
+    test_valid = ds_train_test['test'].train_test_split(test_size=0.5, seed=42)
     ds_ttv = DatasetDict({
         'train': ds_train_test['train'],
         'test': test_valid['test'],
