@@ -22,4 +22,5 @@ class DistilBertModel(Model):
         inputs = tokenizer(value, return_tensors="pt")
         with torch.no_grad():
             logits = model(**inputs).logits
-        return logits.numpy()[0]
+
+        return max(logits.numpy()[0])

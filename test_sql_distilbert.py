@@ -8,7 +8,7 @@ tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/sql_distilbert/")
 
 inputs = tokenizer("""
-    "adMiN' Or s=s#"
+   SELECT * FROM building WHERE saw IN  ( SELECT general FROM lift )
     """, return_tensors="pt")
 
 with torch.no_grad():
