@@ -113,3 +113,6 @@ xxhash @ file:///work/ci_py311/python-xxhash_1676842384694/work
 yarl @ file:///work/ci_py311/yarl_1676827604591/work
 zipp @ file:///work/ci_py311/zipp_1676822894295/work
 zstandard==0.21.0
+keras
+tensorflow
+sqlparse
