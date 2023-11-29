@@ -1,2 +1,5 @@
 test_trainer/
 *bin
+.DS_Store
+.idea/
+__pycache__/
