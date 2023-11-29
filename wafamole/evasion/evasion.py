@@ -8,8 +8,6 @@ from wafamole.models import Model
 from wafamole.payloadfuzzer.sqlfuzzer import SqlFuzzer
 from wafamole.utils.check import type_check
 
-map = Pool().map
-
 
 class EvasionEngine(CoreEngine):
     """Evasion engine object.

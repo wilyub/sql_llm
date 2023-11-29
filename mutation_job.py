@@ -102,16 +102,16 @@ def mutation_with_model(query_body, round_size, max_rounds, mutationModel):
     # print(min_confidence)
 
 # mutation with model prediction
-mutationModel = DistilBertModel()
-engine = EvasionEngine(mutationModel)
-ds = load_csv_to_ds()
-result = []
-count = 0
-min_confidence, min_payload = mutation_with_model("""
-"sELECt canNOT frOM/**/HaLf UniOn select CuRVE fRom VeRy ||DEr by maCHiNerY"
-""", round_size, max_rounds, mutationModel)
-print(min_payload)
-print(min_confidence)
+# mutationModel = DistilBertModel()
+# engine = EvasionEngine(mutationModel)
+# ds = load_csv_to_ds()
+# result = []
+# count = 0
+# min_confidence, min_payload = mutation_with_model("""
+# "sELECt canNOT frOM/**/HaLf UniOn select CuRVE fRom VeRy ||DEr by maCHiNerY"
+# """, round_size, max_rounds, mutationModel)
+# print(min_payload)
+# print(min_confidence)
 # for sets in ds:
 #     for item in ds[sets]:
 #         count += 1
