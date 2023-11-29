@@ -2,7 +2,9 @@ import torch
 from transformers import AutoTokenizer, DistilBertForSequenceClassification
 from tqdm import tqdm
 from datasets import load_from_disk
+import random
 
+from DistilBertModel import DistilBertModel
 from mutation_job import mutation_without_model
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
@@ -18,14 +20,23 @@ def predict(query):
         logits = model(**inputs).logits
     return logits.argmax().item()
 
-query = mutation_without_model('SELECT COUNT ( ProductID )  AS NumberOfProducts FROM Products;',1)
-print(query)
+# query = 'SELECT COUNT ( ProductID )  AS NumberOfProducts FROM Products;'
+
 correct_classify = 0
 misclassify_after_mutation = 0
+# print(query)
+# for i in tqdm(range(4)):
+#     query = mutation_without_model(query, 20)
+#     query = random.choice(list(query))
+#     print(query)
+mutation_round = 4
 for item in tqdm(test_set):
-    pred_y = predict(item['Query'])
-    mutated_query = mutation_without_model(item['Query'], 1)
-    pred_after_mutation = predict(list(mutated_query)[0])
+    query = item['Query']
+    pred_y = predict(query)
+    for i in range(mutation_round):
+        query = mutation_without_model(query, 20)
+        query = random.choice(list(query))
+    pred_after_mutation = predict(query)
     if pred_y == item['label']:
         correct_classify += 1
         if pred_y != pred_after_mutation:
@@ -33,3 +44,21 @@ for item in tqdm(test_set):
 print(f'correct classify {correct_classify}')
 print(f'miss classify {misclassify_after_mutation}')
 print(f'success rate {misclassify_after_mutation / correct_classify}')
+
+#### mulitple round mutation with model
+# model = DistilBertModel()
+# max_rounds = 4
+# round_size = 20
+# correct_classify = 0
+# misclassify_after_mutation = 0
+# for item in tqdm(test_set):
+#     pred_y = predict(item['Query'])
+#     min_confidence,mutated_query = mutation_with_model(item['Query'], round_size, max_rounds, model)
+#     pred_after_mutation = predict(list(mutated_query)[0])
+#     if pred_y == item['label']:
+#         correct_classify += 1
+#         if pred_y != pred_after_mutation:
+#             misclassify_after_mutation += 1
+# print(f'correct classify {correct_classify}')
+# print(f'miss classify {misclassify_after_mutation}')
+# print(f'success rate {misclassify_after_mutation / correct_classify}')
