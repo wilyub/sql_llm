@@ -24,3 +24,12 @@ class DistilBertModel(Model):
             logits = model(**inputs).logits
 
         return max(logits.numpy()[0])
+
+    def predict(self, value: object):
+        tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+        model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/sql_distilbert/")
+        inputs = tokenizer(value, return_tensors="pt")
+        with torch.no_grad():
+            logits = model(**inputs).logits
+
+        return logits.argmax().item()
