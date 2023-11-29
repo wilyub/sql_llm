@@ -1,0 +1,9 @@
+
+
+first:
+
+pip install -r requirements.txt
+
+for testing the attack success rate on single round mutation:
+
+python mutation_test.py
