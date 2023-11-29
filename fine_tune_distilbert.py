@@ -27,6 +27,7 @@ def load_csv_to_ds():
         'test': test_valid['test'],
         'valid': test_valid['train']
     })
+    ds_ttv.save_to_disk("sql_ds.hf")
     return ds_ttv
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
