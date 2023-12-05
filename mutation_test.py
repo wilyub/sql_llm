@@ -22,6 +22,7 @@ def predict(query):
         logits = model(**inputs).logits
     return logits.argmax().item()
 
+
 # query = 'SELECT COUNT ( ProductID )  AS NumberOfProducts FROM Products;'
 
 correct_classify = 0
@@ -50,7 +51,7 @@ misclassify_after_mutation = 0
 #### mulitple round mutation with model
 count = 0
 m_model = DistilBertModel()
-max_rounds = 20
+max_rounds = 1000
 round_size = 20
 correct_classify = 0
 misclassify_after_mutation = 0
@@ -60,9 +61,10 @@ for item in tqdm(test_set):
         break
     count += 1
     pred_y = predict(item['Query'])
-    min_confidence,mutated_query = mutation_with_model(item['Query'], round_size, max_rounds, m_model)
+    print(item['Query'])
+    min_confidence, mutated_query = mutation_with_model(item['Query'], round_size, max_rounds, m_model)
     pred_after_mutation = predict(list(mutated_query)[0])
-    res = {'Query':mutated_query,'label': item['label']}
+    res = {'Query': mutated_query, 'label': item['label']}
     result.append(res)
     if pred_y == item['label']:
         correct_classify += 1

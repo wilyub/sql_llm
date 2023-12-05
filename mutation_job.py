@@ -7,6 +7,7 @@ from DistilBertModel import DistilBertModel
 from fine_tune_distilbert import load_csv_to_ds
 from wafamole.evasion import EvasionEngine
 from wafamole.payloadfuzzer.sqlfuzzer import SqlFuzzer
+from concurrent.futures import ThreadPoolExecutor
 import csv
 
 
@@ -18,12 +19,13 @@ def mutation_without_model(payload, round_size):
 
 def _mutation_round(payload, round_size, model):
     fuzzer = SqlFuzzer(payload)
-
+    pool = ThreadPoolExecutor()
     # Some mutations do not apply to some payloads
     # This removes duplicate payloads
     payloads = {fuzzer.fuzz() for _ in range(round_size)}
-    results = map(model.classify, payloads)
+    results = pool.map(model.classify, payloads)
     confidence, payload = min(zip(results, payloads))
+    pool.shutdown()
     return confidence, payload
 
 
@@ -72,20 +74,20 @@ def mutation_with_model(query_body, round_size, max_rounds, mutationModel):
     min_confidence, min_payload = _mutation_round(query_body, round_size, mutationModel)
     # min_confidence, min_payload = engine.evaluate(query_body, max_rounds, round_size, timeout, threshold)
     evaluation_results.append((min_confidence, min_payload))
-
+    print(threshold)
     while max_rounds > 0 and min_confidence > threshold:
         for candidate_confidence, candidate_payload in sorted(
                 evaluation_results
         ):
             max_rounds -= 1
 
-        confidence, payload = _mutation_round(
-            candidate_payload, round_size, mutationModel
-        )
-        if confidence < candidate_confidence:
-            evaluation_results.append((confidence, payload))
-            min_confidence, min_payload = min(evaluation_results)
-            break
+            confidence, payload = _mutation_round(
+                candidate_payload, round_size, mutationModel
+            )
+            if confidence < candidate_confidence:
+                evaluation_results.append((confidence, payload))
+                min_confidence, min_payload = min(evaluation_results)
+                break
 
     if min_confidence < threshold:
         print("[+] Threshold reached")

@@ -3,6 +3,7 @@ from abc import ABC
 from fine_tune_distilbert import tokenizer
 from wafamole.models import Model
 from transformers import AutoTokenizer, DistilBertForSequenceClassification
+from torch.nn import Sigmoid
 import torch
 
 
@@ -23,7 +24,10 @@ class DistilBertModel(Model):
         with torch.no_grad():
             logits = model(**inputs).logits
 
-        return max(logits.numpy()[0])
+        sig = Sigmoid()
+        prob = sig(logits)
+        print(prob.numpy()[0])
+        return max(prob.numpy()[0])
 
     def predict(self, value: object):
         tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
