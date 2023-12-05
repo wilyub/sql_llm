@@ -308,6 +308,20 @@ class SqlFuzzer(object):
 
         return self.payload
 
+    def set_fuzz(self):
+        payloads = []
+        for s in self.strategies:
+            payload = s(self.payload)
+            payloads.append(payload)
+        return payloads
+
+    def set_fuzz_with_payload(self, input_query):
+        payloads = []
+        for s in self.strategies:
+            payload = s(input_query)
+            payloads.append(payload)
+        return payloads
+
     def current(self):
         return self.payload
 

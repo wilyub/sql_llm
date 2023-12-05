@@ -13,19 +13,22 @@ import csv
 
 def mutation_without_model(payload, round_size):
     fuzzer = SqlFuzzer(payload)
-    payloads = {fuzzer.fuzz() for _ in range(round_size)}
+
+    payloads = fuzzer.set_fuzz()
+    # payloads = {fuzzer.fuzz() for _ in range(round_size)}
     return payloads
 
 
 def _mutation_round(payload, round_size, model):
     fuzzer = SqlFuzzer(payload)
-    pool = ThreadPoolExecutor()
+    # pool = ThreadPoolExecutor(max_workers=2)
     # Some mutations do not apply to some payloads
     # This removes duplicate payloads
-    payloads = {fuzzer.fuzz() for _ in range(round_size)}
-    results = pool.map(model.classify, payloads)
+    payloads = fuzzer.set_fuzz()
+    # {fuzzer.fuzz() for _ in range(round_size)}
+    results = map(model.classify, payloads)
     confidence, payload = min(zip(results, payloads))
-    pool.shutdown()
+    # pool.shutdown()
     return confidence, payload
 
 
@@ -74,7 +77,6 @@ def mutation_with_model(query_body, round_size, max_rounds, mutationModel):
     min_confidence, min_payload = _mutation_round(query_body, round_size, mutationModel)
     # min_confidence, min_payload = engine.evaluate(query_body, max_rounds, round_size, timeout, threshold)
     evaluation_results.append((min_confidence, min_payload))
-    print(threshold)
     while max_rounds > 0 and min_confidence > threshold:
         for candidate_confidence, candidate_payload in sorted(
                 evaluation_results
@@ -95,8 +97,8 @@ def mutation_with_model(query_body, round_size, max_rounds, mutationModel):
         print("[!] Max number of iterations reached")
 
     print(
-        "Reached confidence {}\nwith payload\n{}".format(
-            min_confidence, min_payload
+        "Reached confidence {}\nwith payload\n{}\n round left {}".format(
+            min_confidence, min_payload, max_rounds
         )
     )
     return min_confidence, min_payload
@@ -121,7 +123,7 @@ def mutation_with_model(query_body, round_size, max_rounds, mutationModel):
 #         res = {'Query': min_payload, 'label': item["label"]}
 #         result.append(res)
 # print(count)
-# with open('./mutation_with_model_SQL_datasets', 'w', newline='') as csvfile:
+# with open('./mutation_with_model_SQL_datasets_train.csv', 'w', newline='') as csvfile:
 #     fieldnames = ['Query', 'label']
 #     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 #

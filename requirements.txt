@@ -1,118 +1,14 @@
-absl-py==2.0.0
-accelerate==0.23.0
-aiohttp @ file:///croot/aiohttp_1694181079612/work
-aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
-antlr4-python3-runtime==4.9.3
-apache-beam==2.51.0
-async-timeout @ file:///work/ci_py311/async-timeout_1676826962453/work
-attrs @ file:///work/ci_py311/attrs_1676822758931/work
-bitsandbytes==0.41.1
-Bottleneck @ file:///work/ci_py311/bottleneck_1676827011612/work
-brotlipy==0.7.0
-certifi @ file:///croot/certifi_1690232220950/work/certifi
-cffi @ file:///work/ci_py311/cffi_1676822533496/work
-chardet==5.2.0
-charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
-click==8.1.7
-cloudpickle==2.2.1
-colorama==0.4.6
-crcmod==1.7
-cryptography @ file:///croot/cryptography_1694444244250/work
-DataProperty==1.0.1
-datasets==2.14.5
-dill==0.3.7
-dnspython==2.4.2
-docopt==0.6.2
-einops==0.7.0
-evaluate==0.4.1
-fastavro==1.9.0
-fasteners==0.19
-filelock @ file:///work/ci_py311/filelock_1676823024085/work
-frozenlist @ file:///work/ci_py311/frozenlist_1676825229010/work
-fsspec @ file:///croot/fsspec_1682525977151/work
-gmpy2 @ file:///work/ci_py311/gmpy2_1676839849213/work
-grpcio==1.59.2
-hdfs==2.7.3
-httplib2==0.22.0
-huggingface-hub==0.16.4
-idna @ file:///work/ci_py311/idna_1676822698822/work
-importlib-metadata @ file:///croot/importlib-metadata_1678997070253/work
-Jinja2 @ file:///work/ci_py311/jinja2_1676823587943/work
-joblib==1.3.2
-Js2Py==0.74
-jsonlines==4.0.0
--e git+https://github.com/EleutherAI/lm-evaluation-harness@906ef948dc8dbb4c84e1bb0f2861b1aba30ab533#egg=lm_eval
-MarkupSafe @ file:///work/ci_py311/markupsafe_1676823507015/work
-mbstrdecoder==1.1.3
-mkl-fft @ file:///croot/mkl_fft_1695058164594/work
-mkl-random @ file:///croot/mkl_random_1695059800811/work
-mkl-service==2.4.0
-mpmath @ file:///croot/mpmath_1690848262763/work
-multidict @ file:///work/ci_py311/multidict_1676825314105/work
-multiprocess @ file:///croot/multiprocess_1692294385131/work
-networkx @ file:///croot/networkx_1690561992265/work
-nltk==3.8.1
-numexpr @ file:///croot/numexpr_1683221822650/work
-numpy==1.24.4
-objsize==0.6.1
-omegaconf==2.3.0
-openai==0.28.1
-orjson==3.9.10
-packaging @ file:///croot/packaging_1693575174725/work
-pandas @ file:///croot/pandas_1692289311655/work
-pathvalidate==3.2.0
-peft==0.5.0
-Pillow @ file:///croot/pillow_1695134008276/work
-portalocker==2.8.2
-proto-plus==1.22.3
-protobuf==4.24.3
-psutil==5.9.5
-pyarrow==11.0.0
-pybind11==2.11.1
-pycountry==22.3.5
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-pydot==1.4.2
-pyjsparser==2.7.1
-pymongo==4.6.0
-pyOpenSSL @ file:///croot/pyopenssl_1690223430423/work
-pyparsing==3.1.1
-PySocks @ file:///work/ci_py311/pysocks_1676822712504/work
-pytablewriter==1.2.0
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
-pytz @ file:///croot/pytz_1695131579487/work
-PyYAML @ file:///work/ci_py311/pyyaml_1676827445582/work
-regex @ file:///work/ci_py311/regex_1677086824242/work
-requests @ file:///croot/requests_1690400202158/work
-responses==0.18.0
-rouge-score==0.1.2
-sacrebleu==1.5.0
-safetensors @ file:///croot/safetensors_1692949033383/work
-scikit-learn==1.3.1
-scipy==1.11.2
-sentencepiece==0.1.99
-six==1.10.0
-sqlitedict==2.1.0
-sympy @ file:///work/ci_py311_2/sympy_1679339311852/work
-tabledata==1.3.3
-tcolorpy==0.1.4
-threadpoolctl==3.2.0
-tokenizers==0.13.3
-torch==2.0.1
-torchaudio==2.0.2
-torchvision==0.15.2
-tqdm @ file:///croot/tqdm_1679561862951/work
-tqdm-multiprocess==0.0.11
-transformers==4.33.2
-triton==2.0.0
-typepy==1.3.2
-typing_extensions @ file:///croot/typing_extensions_1690297465030/work
-tzdata @ file:///croot/python-tzdata_1690578112552/work
-tzlocal==5.2
-urllib3 @ file:///croot/urllib3_1686163155763/work
-xxhash @ file:///work/ci_py311/python-xxhash_1676842384694/work
-yarl @ file:///work/ci_py311/yarl_1676827604591/work
-zipp @ file:///work/ci_py311/zipp_1676822894295/work
-zstandard==0.21.0
+numpy
 keras
-tensorflow
+scikit-learn
+joblib
 sqlparse
+networkx
+click
+tensorflow
+datasets
+transformers
+torch
+h5py
+tqdm
+evaluate
