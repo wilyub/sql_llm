@@ -10,10 +10,10 @@ from DistilBertModel import DistilBertModel
 from mutation_job import mutation_without_model, mutation_with_model
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
-model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/sql_distilbert/")
+model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/mutation_sql_distilbert/")
 
 arrow_datasets_reloaded = load_from_disk("sql_ds.hf")
-test_set = arrow_datasets_reloaded["train"]
+test_set = arrow_datasets_reloaded["test"]
 
 
 def predict(query):
@@ -59,7 +59,7 @@ round_size = 20
 correct_classify = 0
 misclassify_after_mutation = 0
 result = []
-with open('mutation_with_model_SQL_datasets_train.csv', 'w', newline='',encoding='utf-8') as csvfile:
+with open('mutation_with_model_SQL_datasets_test.csv', 'w', newline='',encoding='utf-8') as csvfile:
     fieldnames = ['Query', 'label']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -70,7 +70,7 @@ with open('mutation_with_model_SQL_datasets_train.csv', 'w', newline='',encoding
     # for row in result:
     #     writer.writerow(row)
     for item in tqdm(test_set):
-        if count == 100:
+        if count == 20:
             break
         query_token = item['Query'].split(' ')
         if len(query_token) == 1:
@@ -79,7 +79,7 @@ with open('mutation_with_model_SQL_datasets_train.csv', 'w', newline='',encoding
         pred_y = predict(item['Query'])
         print(item['Query'])
         min_confidence, mutated_query = mutation_with_model(item['Query'], round_size, max_rounds, m_model)
-        pred_after_mutation = predict(list(mutated_query)[0])
+        pred_after_mutation = predict(mutated_query)
         res = {'Query': mutated_query, 'label': item['label']}
         writer.writerow(res)
         result.append(res)

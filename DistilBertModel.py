@@ -8,7 +8,7 @@ import torch
 
 
 class DistilBertModel(Model):
-    _model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/sql_distilbert/")
+    _model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/mutation_sql_distilbert/")
     _tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 
     def __int__(self):
