@@ -36,6 +36,8 @@ This repository presents our work aimed at improving existing WAF models to bett
 - tqdm
 - evaluate
 
+pip install -r requirements.txt
+
 ## Usage
 
 Run either `fine_tune_distilbert.py` or `fine_tune_mutation_distilbert.py` for tweaking the finetuning process on both versions, with and without the mutated data. You can also run (tweak) `test_sql_distilbert.py` to test the model(s).
