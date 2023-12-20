@@ -10,7 +10,7 @@ from wafamole.payloadfuzzer.sqlfuzzer import SqlFuzzer
 from concurrent.futures import ThreadPoolExecutor
 import csv
 
-
+#all mutation code are coming from the github: https://github.com/AvalZ/WAF-A-MoLE
 def mutation_without_model(payload, round_size):
     fuzzer = SqlFuzzer(payload)
 
@@ -37,40 +37,6 @@ round_size = 20
 threshold = 0.5
 timeout = 14400
 
-
-#
-# ds = load_csv_to_ds()
-# result = []
-# count = 0
-# for sets in ds:
-#     for item in ds[sets]:
-#         count += 1
-#         payloads = mutation_without_model(item['Query'], round_size)
-#         res = [{'Query': i, 'label': item["label"]} for i in payloads]
-#         result += res
-# print(f'total Query {count}')
-# query_body = """"admin' OR 1=1#"""
-# with open('./mutation_without_model_SQL_datasets', 'w', newline='') as csvfile:
-#     fieldnames = ['Query', 'label']
-#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-#
-#     # Write the header
-#     writer.writeheader()
-#
-#     # Write the data
-#     for row in result:
-#         writer.writerow(row)
-
-
-# fuzzer = SqlFuzzer(query)
-# payloads = {fuzzer.fuzz() for _ in range(round_size)}
-# results = map(mutationModel.classify, payloads)
-# print(results)
-# abc = zip(results, payloads)
-# print(abc)
-# confidence, payload = min(zip(results, payloads))
-# print(confidence)
-# print(payload)
 
 def mutation_with_model(query_body, round_size, max_rounds, mutationModel):
     evaluation_results = []

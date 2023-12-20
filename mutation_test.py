@@ -15,6 +15,13 @@ model = DistilBertForSequenceClassification.from_pretrained("./sql_llm/mutation_
 arrow_datasets_reloaded = load_from_disk("sql_ds.hf")
 test_set = arrow_datasets_reloaded["test"]
 
+count = 0
+m_model = DistilBertModel()
+max_rounds = 500
+round_size = 20
+correct_classify = 0
+misclassify_after_mutation = 0
+
 
 def predict(query):
     inputs = tokenizer(query, return_tensors="pt")
@@ -23,15 +30,15 @@ def predict(query):
     return logits.argmax().item()
 
 
-#query = 'SELECT COUNT ( ProductID )  AS NumberOfProducts FROM Products;'
+query = "admin' OR 1=1#"
+print(m_model.classify(query))
+result = []
+print(query)
+for i in tqdm(range(6)):
+    min_confidence, query = mutation_with_model(query, round_size, 100, m_model)
+    result.append([min_confidence,100*(i+1)])
+print(result)
 
-correct_classify = 0
-misclassify_after_mutation = 0
-# print(query)
-# for i in tqdm(range(4)):
-#     query = mutation_without_model(query, 4)
-#     query = random.choice(list(query))
-#     print(query)
 # mutation_round = 250
 # for item in tqdm(test_set):
 #     query_token = item['Query'].split(' ')
@@ -41,55 +48,54 @@ misclassify_after_mutation = 0
 #     pred_y = predict(query)
 #     if pred_y == item['label']:
 #         correct_classify += 1
-#         for i in range(mutation_round):
-#             query = mutation_without_model(query, 5)
-#             query = random.choice(list(query))
+#         # query = mutation_with_model(item['Query'], round_size, max_rounds, m_model)
+#         # query = random.choice(list(query))
 #         pred_after_mutation = predict(query)
 #         if pred_y != pred_after_mutation:
 #             misclassify_after_mutation += 1
 # print(f'correct classify {correct_classify}')
 # print(f'miss classify {misclassify_after_mutation}')
 # print(f'success rate {misclassify_after_mutation / correct_classify}')
-
-#### mulitple round mutation with model
-count = 0
-m_model = DistilBertModel()
-max_rounds = 500
-round_size = 20
-correct_classify = 0
-misclassify_after_mutation = 0
-result = []
-with open('mutation_with_model_SQL_datasets_test.csv', 'w', newline='',encoding='utf-8') as csvfile:
-    fieldnames = ['Query', 'label']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-    # Write the header
-    writer.writeheader()
-
-    # Write the data
-    # for row in result:
-    #     writer.writerow(row)
-    for item in tqdm(test_set):
-        if count == 20:
-            break
-        query_token = item['Query'].split(' ')
-        if len(query_token) == 1:
-            continue
-        count += 1
-        pred_y = predict(item['Query'])
-        print(item['Query'])
-        min_confidence, mutated_query = mutation_with_model(item['Query'], round_size, max_rounds, m_model)
-        pred_after_mutation = predict(mutated_query)
-        res = {'Query': mutated_query, 'label': item['label']}
-        writer.writerow(res)
-        result.append(res)
-        if pred_y == item['label']:
-            correct_classify += 1
-            if pred_y != pred_after_mutation:
-                misclassify_after_mutation += 1
-print(f'correct classify {correct_classify}')
-print(f'miss classify {misclassify_after_mutation}')
-print(f'success rate {misclassify_after_mutation / correct_classify}')
+#
+# #### mulitple round mutation with model
+# count = 0
+# m_model = DistilBertModel()
+# max_rounds = 500
+# round_size = 20
+# correct_classify = 0
+# misclassify_after_mutation = 0
+# result = []
+# with open('mutation_with_model_SQL_datasets_test.csv', 'w', newline='',encoding='utf-8') as csvfile:
+#     fieldnames = ['Query', 'label']
+#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+#
+#     # Write the header
+#     writer.writeheader()
+#
+#     # Write the data
+#     # for row in result:
+#     #     writer.writerow(row)
+#     for item in tqdm(test_set):
+#         if count == 20:
+#             break
+#         query_token = item['Query'].split(' ')
+#         if len(query_token) == 1:
+#             continue
+#         count += 1
+#         pred_y = predict(item['Query'])
+#         print(item['Query'])
+#         min_confidence, mutated_query = mutation_with_model(item['Query'], round_size, max_rounds, m_model)
+#         pred_after_mutation = predict(mutated_query)
+#         res = {'Query': mutated_query, 'label': item['label']}
+#         writer.writerow(res)
+#         result.append(res)
+#         if pred_y == item['label']:
+#             correct_classify += 1
+#             if pred_y != pred_after_mutation:
+#                 misclassify_after_mutation += 1
+# print(f'correct classify {correct_classify}')
+# print(f'miss classify {misclassify_after_mutation}')
+# print(f'success rate {misclassify_after_mutation / correct_classify}')
 
 # with open('mutation_with_model_SQL_datasets.csv', 'w', newline='',encoding='utf-8') as csvfile:
 #     fieldnames = ['Query', 'label']
