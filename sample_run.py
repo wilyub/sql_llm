@@ -19,7 +19,7 @@ def main(argv):
     opts, args = getopt.getopt(argv, "hq:r:", ["query=", "rounds="])
     for opt, arg in opts:
         if opt == '-h':
-            print('sample_run.py -q "<query>" -r <max_rounds)>')
+            print('py sample_run.py -q "<query>" -r <max_rounds)>')
             sys.exit()
         elif opt in ("-q", "--query"):
             query = arg
