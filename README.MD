@@ -40,3 +40,17 @@ This repository presents our work aimed at improving existing WAF models to bett
 
 Run either `fine_tune_distilbert.py` or `fine_tune_mutation_distilbert.py` for tweaking the finetuning process on both versions, with and without the mutated data. You can also run (tweak) `test_sql_distilbert.py` to test the model(s).
 
+
+## Results
+
+We tested three models (Distilbert, SQL Distilbert, and SQL Mutation Distilbert). The latter two models were fine-tuned using the `fine_tune_distilbert.py` and `fine_tune_mutation_distilbert.py` scripts respectively. The first test was done on regular SQL injections from the original Kaggle dataset. The second test was done on SQL Injections that had been mutated using the WAF-A-MOLE mutation protocol.
+
+SQL Injections
+- Distilbert Accuracy: 0.535
+- SQL Distilbert Accuracy: 0.999
+- SQL Mutation Distilbert Accuracy: 0.999
+
+Mutation Injections
+- Distilbert Accuracy: 0.3
+- SQL Distilbert Accuracy: 0.6
+- SQL Mutation Distilbert Accuracy: 1
