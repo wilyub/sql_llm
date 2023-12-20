@@ -40,6 +40,28 @@ pip install -r requirements.txt
 
 ## Usage
 
+first run `pip install -r requirements.txt` to install all requirements
+
+for the sample run, you can use `py sample_run.py -q "<query>" -r <max_rounds)>` if no query or max_rounds input we will
+use query "admin' OR 1=1#" and max rouns of 500 as default. 
+
+sample usage `py sample_run.py -q "SELECT wp_posts.* FROM wp_posts WHERE ID IN  ( 367581 )"  -r 500`
+will gives output 
+````
+original query is  SELECT wp_posts.* FROM wp_posts WHERE ID IN  ( 367581 )
+max rounds is   500
+[!] Max number of iterations reached
+Reached confidence 0.9993301630020142
+with payload
+SELECT wp_posts.* FROM wp_posts/**/WHERE
+                                        ID IN/*c%aBD*/ ( 0x59bdd/*x0g?*/)
+ round left -3
+original query  : model_label: 0, sql_logits_label: 0, mutation_logits_label: 0
+mutated query  : model_label: 0, sql_logits_label: 0, mutation_logits_label: 0
+````
+
+
+
 Run either `fine_tune_distilbert.py` or `fine_tune_mutation_distilbert.py` for tweaking the finetuning process on both versions, with and without the mutated data. You can also run (tweak) `test_sql_distilbert.py` to test the model(s).
 
 
